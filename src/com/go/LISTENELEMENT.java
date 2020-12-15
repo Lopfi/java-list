@@ -10,7 +10,7 @@ public abstract class LISTENELEMENT {
 
     public abstract int restlaengeGeben();
 
-    public abstract DATENELEMENT datenelementGeben();
+    public abstract DATENELEMENT datenGeben();
 
     public abstract DATENELEMENT suchen(String vergleichwert);
 

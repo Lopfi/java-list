@@ -1,10 +1,10 @@
 package com.go;
 
-public class KNOTEN {
+public class KNOTEN extends LISTENELEMENT {
     private DATENELEMENT daten;
-    private KNOTEN nachfolger;
+    private LISTENELEMENT nachfolger;
 
-    public KNOTEN(DATENELEMENT daten, KNOTEN nachfolger) {
+    public KNOTEN(DATENELEMENT daten, LISTENELEMENT nachfolger) {
         this.daten = daten;
         this.nachfolger = nachfolger;
     }
@@ -14,15 +14,15 @@ public class KNOTEN {
         nachfolger = null;
     }
 
-    public void nachfolgerSetzen(KNOTEN nachfolgerNeu) {
-        nachfolger = nachfolgerNeu;
-    }
-
-    public KNOTEN nachfolgerGeben() {
+    public LISTENELEMENT nachfolgerGeben() {
         return nachfolger;
     }
 
-    public DATENELEMENT datenelementGeben() {
+    public void nachfolgerSetzen(LISTENELEMENT nachfolgerNeu) {
+        nachfolger = nachfolgerNeu;
+    }
+
+    public DATENELEMENT datenGeben() {
         return daten;
     }
 
@@ -35,13 +35,18 @@ public class KNOTEN {
         else return 1;
     }
 
+    public DATENELEMENT endeGeben() {
+        if (nachfolger == null) return daten;
+        else return nachfolger.endeGeben();
+    }
+
     public DATENELEMENT suchen(String vergleichwert) {
         if (daten.SchluesselIstGleich(vergleichwert)) return daten;
         else if (nachfolger != null) return nachfolger.suchen(vergleichwert);
         else return null;
     }
 
-    public KNOTEN sortiertEinfuegen(DATENELEMENT datenelement) {
+    public LISTENELEMENT sortiertEinfuegen(DATENELEMENT datenelement) {
         if (datenelement.istKleinerAls(this.daten) == false) {
             KNOTEN knoten = new KNOTEN(datenelement, this);
             return knoten;
@@ -61,26 +66,21 @@ public class KNOTEN {
         this.nachfolger = knoten;
     }
 
-    public KNOTEN suchen(DATENELEMENT datenelement) {
+    public LISTENELEMENT suchen(DATENELEMENT datenelement) {
         if (datenelement == this) return this;
         else if (nachfolger != null) return nachfolger.suchen(datenelement);
         else return null;
     }
 
-    public KNOTEN vorgaengerSuchen(DATENELEMENT datenelement) {
+    public LISTENELEMENT vorgaengerSuchen(DATENELEMENT datenelement) {
         if (nachfolger != null) {
-            if (datenelement == nachfolger.datenelementGeben()) return this;
+            if (datenelement == nachfolger.datenGeben()) return this;
             else return nachfolger.vorgaengerSuchen(datenelement);
         }
         else return null;
     }
 
-    public DATENELEMENT endeGeben() {
-        if (nachfolger == null) return daten;
-        else return nachfolger.endeGeben();
-    }
-
-    public KNOTEN endeEntfernen() {
+    public LISTENELEMENT endeEntfernen() {
         if (nachfolger == null) return null;
         else {
             nachfolger = nachfolger.endeEntfernen();
