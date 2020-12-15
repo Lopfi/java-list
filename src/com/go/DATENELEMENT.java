@@ -1,6 +1,6 @@
 package com.go;
 
-interface DATENELEMENT {
+public interface DATENELEMENT {
     void InformationGeben();
 
     String getKey();

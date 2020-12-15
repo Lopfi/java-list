@@ -9,6 +9,6 @@ public class Main {
             PATIENT p = new PATIENT(Integer.toString(i));
             liste.vorneEinfuegen(p);
         }
-        System.out.println(liste.Suchen("5"));
+        System.out.println(liste.suchen("5"));
     }
 }

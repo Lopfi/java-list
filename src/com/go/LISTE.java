@@ -1,6 +1,6 @@
 package com.go;
 
-public class LISTE {
+public class    LISTE {
     private KNOTEN anfang;
 
     public LISTE() {
@@ -12,7 +12,7 @@ public class LISTE {
         anfang = k;
     }
 
-    public void hintenEinfuegen(DATENELEMENT datenelement) {
+    public void hintenEinfuegenWhile(DATENELEMENT datenelement) {
         KNOTEN k = new KNOTEN(datenelement);
         if (anfang == null) anfang = k;
         else {
@@ -22,11 +22,11 @@ public class LISTE {
         }
     }
 
-    public  void hintenEinguegenRec(DATENELEMENT datenelement, KNOTEN knoten) {
+    public  void hintenEinguegen(DATENELEMENT datenelement, KNOTEN knoten) {
         KNOTEN k = new KNOTEN(datenelement);
         if (anfang == null) anfang = k;
         else if (knoten.NachfolgerGeben() == null) knoten.NachfolgerSetzen(k);
-        else this.hintenEinguegenRec(datenelement, knoten.NachfolgerGeben());
+        else this.hintenEinguegen(datenelement, knoten.NachfolgerGeben());
     }
 
     public void einfuegenVor(DATENELEMENT dNeu, DATENELEMENT datenelement) {
@@ -60,8 +60,8 @@ public class LISTE {
     }
 
     public void knotenEntfernen(DATENELEMENT datenelement) {
-        KNOTEN k1 = this.Suchen(datenelement);
-        KNOTEN k2 = this.VorgaengerSuchen(datenelement);
+        KNOTEN k1 = this.suchen(datenelement);
+        KNOTEN k2 = this.vorgaengerSuchen(datenelement);
         k2.NachfolgerSetzen(k1.NachfolgerGeben());
     }
 
@@ -75,7 +75,7 @@ public class LISTE {
         return datenelement;
     }
 
-    public void InformationGeben() {
+    public void informationGeben() {
         KNOTEN knoten;
         knoten = anfang;
 
@@ -85,22 +85,22 @@ public class LISTE {
         }
     }
 
-    public int LaengeGeben() {
+    public int laengeGeben() {
         if (anfang == null) return 0;
         else return anfang.RestlaengeGeben() + 1;
     }
 
-    public DATENELEMENT Suchen(String vergleichwert) {
+    public DATENELEMENT suchen(String vergleichwert) {
         if (anfang != null) return anfang.Suchen(vergleichwert);
         else return null;
     }
 
-    public KNOTEN Suchen(DATENELEMENT datenelement) {
+    public KNOTEN suchen(DATENELEMENT datenelement) {
         if (anfang != null) return anfang.Suchen(datenelement);
         else return null;
     }
 
-    public KNOTEN VorgaengerSuchen(DATENELEMENT datenelement) {
+    public KNOTEN vorgaengerSuchen(DATENELEMENT datenelement) {
         if (anfang != null) {
             if (anfang.NachfolgerGeben() != null)
                 return anfang.VorgaengerSuchen(datenelement);
