@@ -74,4 +74,17 @@ public class KNOTEN {
         }
         else return null;
     }
+
+    public DATENELEMENT endeGeben() {
+        if (nachfolger == null) return daten;
+        else return nachfolger.endeGeben();
+    }
+
+    public KNOTEN endeEntfernen() {
+        if (nachfolger == null) return null;
+        else {
+            nachfolger = nachfolger.endeEntfernen();
+            return this;
+        }
+    }
 }

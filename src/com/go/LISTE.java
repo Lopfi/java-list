@@ -65,6 +65,15 @@ public class    LISTE {
         k2.NachfolgerSetzen(k1.NachfolgerGeben());
     }
 
+    public DATENELEMENT endeEntfernen() {
+        if (anfang == null) return null;
+        else {
+            DATENELEMENT ende = anfang.endeGeben();
+            return anfang.endeEntfernen().DatenelementGeben();
+        }
+
+    }
+
     public DATENELEMENT vorneEntnehmen() {
         DATENELEMENT datenelement = null;
 
