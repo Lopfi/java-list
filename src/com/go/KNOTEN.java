@@ -14,30 +14,30 @@ public class KNOTEN {
         nachfolger = null;
     }
 
-    public void NachfolgerSetzen(KNOTEN nachfolgerNeu) {
+    public void nachfolgerSetzen(KNOTEN nachfolgerNeu) {
         nachfolger = nachfolgerNeu;
     }
 
-    public KNOTEN NachfolgerGeben() {
+    public KNOTEN nachfolgerGeben() {
         return nachfolger;
     }
 
-    public DATENELEMENT DatenelementGeben() {
+    public DATENELEMENT datenelementGeben() {
         return daten;
     }
 
-    public void InformationGeben() {
+    public void informationGeben() {
         daten.InformationGeben();
     }
 
-    public int RestlaengeGeben() {
-        if (nachfolger == null) return nachfolger.RestlaengeGeben() + 1;
+    public int restlaengeGeben() {
+        if (nachfolger == null) return nachfolger.restlaengeGeben() + 1;
         else return 1;
     }
 
-    public DATENELEMENT Suchen(String vergleichwert) {
+    public DATENELEMENT suchen(String vergleichwert) {
         if (daten.SchluesselIstGleich(vergleichwert)) return daten;
-        else if (nachfolger != null) return nachfolger.Suchen(vergleichwert);
+        else if (nachfolger != null) return nachfolger.suchen(vergleichwert);
         else return null;
     }
 
@@ -48,7 +48,7 @@ public class KNOTEN {
         }
         else {
             if (nachfolger == null) {
-                HintenEinfuegen(datenelement);
+                hintenEinfuegen(datenelement);
             } else {
                 nachfolger = nachfolger.sortiertEinfuegen(datenelement);
             }
@@ -56,21 +56,21 @@ public class KNOTEN {
         }
     }
 
-    public void HintenEinfuegen(DATENELEMENT datenelement) {
+    public void hintenEinfuegen(DATENELEMENT datenelement) {
         KNOTEN knoten = new KNOTEN(datenelement);
         this.nachfolger = knoten;
     }
 
-    public KNOTEN Suchen (DATENELEMENT datenelement) {
+    public KNOTEN suchen(DATENELEMENT datenelement) {
         if (datenelement == this) return this;
-        else if (nachfolger != null) return nachfolger.Suchen(datenelement);
+        else if (nachfolger != null) return nachfolger.suchen(datenelement);
         else return null;
     }
 
-    public KNOTEN VorgaengerSuchen(DATENELEMENT datenelement) {
+    public KNOTEN vorgaengerSuchen(DATENELEMENT datenelement) {
         if (nachfolger != null) {
-            if (datenelement == nachfolger.DatenelementGeben()) return this;
-            else return nachfolger.VorgaengerSuchen(datenelement);
+            if (datenelement == nachfolger.datenelementGeben()) return this;
+            else return nachfolger.vorgaengerSuchen(datenelement);
         }
         else return null;
     }
