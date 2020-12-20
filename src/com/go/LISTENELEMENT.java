@@ -4,8 +4,6 @@ public abstract class LISTENELEMENT {
 
     public abstract void nachfolgerSetzen(LISTENELEMENT nachfolgerNeu);
 
-    public abstract void hintenEinfuegen(DATENELEMENT datenelement);
-
     public abstract void informationGeben();
 
     public abstract int restlaengeGeben();
@@ -16,6 +14,10 @@ public abstract class LISTENELEMENT {
 
     public abstract DATENELEMENT endeGeben();
 
+    public abstract LISTENELEMENT einfuegenVor(DATENELEMENT datenelement, DATENELEMENT vergleich);
+
+    public abstract LISTENELEMENT hintenEinfuegen(DATENELEMENT datenelement);
+
     public abstract LISTENELEMENT endeEntfernen();
 
     public abstract LISTENELEMENT sortiertEinfuegen(DATENELEMENT datenelement);
@@ -25,4 +27,6 @@ public abstract class LISTENELEMENT {
     public abstract LISTENELEMENT vorgaengerSuchen(DATENELEMENT datenelement);
 
     public abstract LISTENELEMENT nachfolgerGeben();
+
+    public abstract LISTENELEMENT knotenEntfernen(DATENELEMENT datenelement);
 }

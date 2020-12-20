@@ -22,11 +22,8 @@ public class    LISTE {
         }
     }
 
-    public  void hintenEinguegen(DATENELEMENT datenelement, LISTENELEMENT knoten) {
-        KNOTEN k = new KNOTEN(datenelement);
-        if (anfang == null) anfang = k;
-        else if (knoten.nachfolgerGeben() == null) knoten.nachfolgerSetzen(k);
-        else this.hintenEinguegen(datenelement, knoten.nachfolgerGeben());
+    public  void hintenEinguegen(DATENELEMENT datenelement) {
+        anfang.hintenEinfuegen(datenelement);
     }
 
     public void einfuegenVor(DATENELEMENT dNeu, DATENELEMENT datenelement) {

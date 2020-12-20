@@ -18,6 +18,14 @@ public class KNOTEN extends LISTENELEMENT {
         return nachfolger;
     }
 
+    public LISTENELEMENT knotenEntfernen(DATENELEMENT datenelement) {
+        if(daten == datenelement) return nachfolger;
+        else {
+            nachfolger = nachfolger.knotenEntfernen(datenelement);
+            return this;
+        }
+    }
+
     public void nachfolgerSetzen(LISTENELEMENT nachfolgerNeu) {
         nachfolger = nachfolgerNeu;
     }
@@ -31,19 +39,25 @@ public class KNOTEN extends LISTENELEMENT {
     }
 
     public int restlaengeGeben() {
-        if (nachfolger == null) return nachfolger.restlaengeGeben() + 1;
-        else return 1;
+        return nachfolger.restlaengeGeben() + 1;
     }
 
     public DATENELEMENT endeGeben() {
-        if (nachfolger == null) return daten;
+        if (nachfolger.endeGeben() == null) return daten;
         else return nachfolger.endeGeben();
     }
 
     public DATENELEMENT suchen(String vergleichwert) {
         if (daten.SchluesselIstGleich(vergleichwert)) return daten;
-        else if (nachfolger != null) return nachfolger.suchen(vergleichwert);
-        else return null;
+        else return nachfolger.suchen(vergleichwert);
+    }
+
+    public LISTENELEMENT einfuegenVor(DATENELEMENT datenelement, DATENELEMENT vergleich) {
+        if (this.daten == vergleich) {
+            KNOTEN k = new KNOTEN(datenelement, this);
+            return k;
+        } else nachfolger = nachfolger.einfuegenVor(datenelement, vergleich);
+        return this;
     }
 
     public LISTENELEMENT sortiertEinfuegen(DATENELEMENT datenelement) {
@@ -52,39 +66,28 @@ public class KNOTEN extends LISTENELEMENT {
             return knoten;
         }
         else {
-            if (nachfolger == null) {
-                hintenEinfuegen(datenelement);
-            } else {
-                nachfolger = nachfolger.sortiertEinfuegen(datenelement);
-            }
+            nachfolger = nachfolger.sortiertEinfuegen(datenelement);
             return this;
         }
     }
 
-    public void hintenEinfuegen(DATENELEMENT datenelement) {
-        KNOTEN knoten = new KNOTEN(datenelement);
-        this.nachfolger = knoten;
+    public LISTENELEMENT hintenEinfuegen(DATENELEMENT datenelement) {
+        nachfolger = nachfolger.hintenEinfuegen(datenelement);
+        return this;
     }
 
     public LISTENELEMENT suchen(DATENELEMENT datenelement) {
-        if (datenelement == this) return this;
-        else if (nachfolger != null) return nachfolger.suchen(datenelement);
-        else return null;
+        if (datenelement == this.daten) return this;
+        else return nachfolger.suchen(datenelement);
     }
 
     public LISTENELEMENT vorgaengerSuchen(DATENELEMENT datenelement) {
-        if (nachfolger != null) {
-            if (datenelement == nachfolger.datenGeben()) return this;
-            else return nachfolger.vorgaengerSuchen(datenelement);
-        }
-        else return null;
+        if (datenelement == nachfolger.datenGeben()) return this;
+        else return nachfolger.vorgaengerSuchen(datenelement);
     }
 
     public LISTENELEMENT endeEntfernen() {
-        if (nachfolger == null) return null;
-        else {
-            nachfolger = nachfolger.endeEntfernen();
-            return this;
-        }
+        nachfolger = nachfolger.endeEntfernen();
+        return this;
     }
 }
