@@ -8,7 +8,7 @@ class PATIENT implements DATENELEMENT {
     }
 
     public void InformationGeben() {
-        System.out.println(name);
+        System.out.print(name);
     }
 
     public String getKey() {

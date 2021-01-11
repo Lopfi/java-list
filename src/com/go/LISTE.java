@@ -4,56 +4,35 @@ public class    LISTE {
     private LISTENELEMENT anfang;
 
     public LISTE() {
-        anfang = null;
+        anfang = new ABSCHLUSS();
     }
 
     public void vorneEinfuegen(DATENELEMENT datenelement) {
-        KNOTEN k = new KNOTEN(datenelement, anfang);
-        anfang = k;
+        anfang = new KNOTEN(datenelement, anfang);
     }
 
     public void hintenEinfuegenWhile(DATENELEMENT datenelement) {
-        KNOTEN k = new KNOTEN(datenelement);
-        if (anfang == null) anfang = k;
-        else {
-            LISTENELEMENT k2 = anfang;
-            while (k2.nachfolgerGeben() != null) k2 = k2.nachfolgerGeben();
-            k2.nachfolgerSetzen(k);
-        }
+        LISTENELEMENT k2 = anfang;
+        while (k2.nachfolgerGeben() != null) k2 = k2.nachfolgerGeben();
+        k2.nachfolgerSetzen(new KNOTEN(datenelement));
     }
 
-    public  void hintenEinguegen(DATENELEMENT datenelement) {
-        anfang.hintenEinfuegen(datenelement);
+    public  void hintenEinfuegen(DATENELEMENT datenelement) {
+        anfang = anfang.hintenEinfuegen(datenelement);
     }
 
-    public void einfuegenVor(DATENELEMENT dNeu, DATENELEMENT datenelement) {
-        LISTENELEMENT k1 = anfang;
-        LISTENELEMENT k2 = null;
-        while (k1.datenGeben() != datenelement) {
-            k2 = k1;
-            k1 = k2.nachfolgerGeben();
-        }
-        if (k2 != null) {
-            KNOTEN k = new KNOTEN(dNeu, k1);
-            k2.nachfolgerSetzen(k);
-        } else {
-            k2 = anfang;
-            anfang = new KNOTEN(dNeu, k2);
-        }
+    public void einfuegenVor(DATENELEMENT dNeu, DATENELEMENT dvergleich) {
+        anfang = anfang.einfuegenVor(dNeu, dvergleich);
     }
 
     public void sortiertEinfuegen(DATENELEMENT datenelement) {
-        if (anfang ==null) vorneEinfuegen(datenelement);
-        else anfang = anfang.sortiertEinfuegen(datenelement);
+        anfang = anfang.sortiertEinfuegen(datenelement);
     }
 
     public DATENELEMENT anfangEntfernen() {
-        if (anfang == null) return null;
-        else {
-            DATENELEMENT daten = anfang.datenGeben();
-            anfang = anfang.nachfolgerGeben();
-            return daten;
-        }
+        DATENELEMENT daten = anfang.datenGeben();
+        anfang = anfang.nachfolgerGeben();
+        return daten;
     }
 
     public void knotenEntfernen(DATENELEMENT datenelement) {
@@ -63,55 +42,36 @@ public class    LISTE {
     }
 
     public DATENELEMENT endeEntfernen() {
-        if (anfang == null) return null;
-        else {
-            DATENELEMENT ende = anfang.endeGeben();
-            return anfang.endeEntfernen().datenGeben();
-        }
-
-    }
-
-    public DATENELEMENT vorneEntnehmen() {
-        DATENELEMENT datenelement = null;
-
-        if (anfang != null) {
-            datenelement = anfang.datenGeben();
-            anfang = anfang.nachfolgerGeben();
-        }
-        return datenelement;
+        DATENELEMENT ende = anfang.endeGeben();
+        return anfang.endeEntfernen().datenGeben();
     }
 
     public void informationGeben() {
         LISTENELEMENT knoten;
         knoten = anfang;
-
-        while (knoten != null) {
-            knoten.datenGeben().InformationGeben();
+        while (!(knoten instanceof ABSCHLUSS)) {
+            knoten.informationGeben();
+            System.out.print("; ");
             knoten = knoten.nachfolgerGeben();
         }
+        System.out.println();
     }
 
     public int laengeGeben() {
-        if (anfang == null) return 0;
-        else return anfang.restlaengeGeben() + 1;
+        return anfang.restlaengeGeben() + 1;
     }
 
     public DATENELEMENT suchen(String vergleichwert) {
-        if (anfang != null) return anfang.suchen(vergleichwert);
-        else return null;
+        return anfang.suchen(vergleichwert);
     }
 
     public LISTENELEMENT suchen(DATENELEMENT datenelement) {
-        if (anfang != null) return anfang.suchen(datenelement);
-        else return null;
+        return anfang.suchen(datenelement);
     }
 
     public LISTENELEMENT vorgaengerSuchen(DATENELEMENT datenelement) {
-        if (anfang != null) {
             if (anfang.nachfolgerGeben() != null)
                 return anfang.vorgaengerSuchen(datenelement);
             else return null;
-        }
-        else return null;
     }
 }

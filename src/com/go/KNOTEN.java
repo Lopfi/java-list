@@ -52,16 +52,16 @@ public class KNOTEN extends LISTENELEMENT {
         else return nachfolger.suchen(vergleichwert);
     }
 
-    public LISTENELEMENT einfuegenVor(DATENELEMENT datenelement, DATENELEMENT vergleich) {
-        if (this.daten == vergleich) {
-            KNOTEN k = new KNOTEN(datenelement, this);
+    public LISTENELEMENT einfuegenVor(DATENELEMENT dneu, DATENELEMENT dvergleich) {
+        if (this.daten == dvergleich) {
+            KNOTEN k = new KNOTEN(dneu, this);
             return k;
-        } else nachfolger = nachfolger.einfuegenVor(datenelement, vergleich);
+        } else nachfolger = nachfolger.einfuegenVor(dneu, dvergleich);
         return this;
     }
 
     public LISTENELEMENT sortiertEinfuegen(DATENELEMENT datenelement) {
-        if (datenelement.istKleinerAls(this.daten) == false) {
+        if (!datenelement.istKleinerAls(this.daten)) {
             KNOTEN knoten = new KNOTEN(datenelement, this);
             return knoten;
         }

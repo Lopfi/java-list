@@ -2,9 +2,8 @@ package com.go;
 
 public class ABSCHLUSS extends LISTENELEMENT{
 
-
     public LISTENELEMENT nachfolgerGeben() {
-        return null;
+        return this;
     }
 
     public LISTENELEMENT knotenEntfernen(DATENELEMENT datenelement) {
@@ -17,7 +16,9 @@ public class ABSCHLUSS extends LISTENELEMENT{
         return null;
     }
 
-    public void informationGeben() {}
+    public void informationGeben() {
+        System.out.print("Abschluss");
+    }
 
     public int restlaengeGeben() {
         return 0;
@@ -37,13 +38,12 @@ public class ABSCHLUSS extends LISTENELEMENT{
     }
 
     public LISTENELEMENT einfuegenVor(DATENELEMENT datenelement, DATENELEMENT vergleich) {
-        hintenEinfuegen(datenelement);
-        return this;
+        return hintenEinfuegen(datenelement);
     }
 
     public LISTENELEMENT hintenEinfuegen(DATENELEMENT datenelement) {
-        this.einfuegenVor(datenelement, null);
-        return this;
+        KNOTEN knoten = new KNOTEN(datenelement, this);
+        return knoten;
     }
 
     public LISTENELEMENT suchen(DATENELEMENT datenelement) {
