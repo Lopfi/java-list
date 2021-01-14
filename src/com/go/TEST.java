@@ -2,6 +2,11 @@ package com.go;
 
 public class TEST {
 
+    public static void main(String[] args) {
+        TEST test = new TEST();
+        test.testAll();
+    }
+
     private LISTE liste;
     private int anzahl;
 
