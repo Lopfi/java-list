@@ -14,13 +14,6 @@ public class TEST {
         this.anzahl = anzahl;
     }
 
-    public void hintenEinfuegenWhile(int anzahl) {
-        for (int i = 0; i < anzahl; i++) {
-            PATIENT p = new PATIENT(Integer.toString(i));
-            liste.hintenEinfuegenWhile(p);
-        }
-    }
-
     public void hintenEinfuegen(int anzahl) {
         for (int i = 0; i < anzahl; i++) {
             PATIENT p = new PATIENT(Integer.toString(i));
