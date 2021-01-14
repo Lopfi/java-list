@@ -78,7 +78,7 @@ public class TEST {
         liste.informationGeben();
 
         System.out.println("p1 vor p0 einfuegen:");
-        liste.einfuegenVor(p0, p1);
+        liste.einfuegenVor(p1, p0);
         liste.informationGeben();
 
         System.out.println("p0 entfernen:");
