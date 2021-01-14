@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="java-list:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/java_list_jar</output-path>
+    <root id="archive" name="java-list.jar">
+      <element id="module-output" name="java-list" />
+    </root>
+  </artifact>
+</component>
