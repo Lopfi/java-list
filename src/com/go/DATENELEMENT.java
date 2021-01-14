@@ -1,11 +1,11 @@
 package com.go;
 
 public interface DATENELEMENT {
-    void InformationGeben();
+    void informationGeben();
 
     String getKey();
 
-    boolean SchluesselIstGleich(String vergleichswert);
+    boolean schluesselIstGleich(String vergleichswert);
 
     boolean istKleinerAls(DATENELEMENT datenelement);
 }

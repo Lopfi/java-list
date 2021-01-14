@@ -13,11 +13,11 @@ class KUNDE implements DATENELEMENT {
         return name;
     }
 
-    public void InformationGeben() {
+    public void informationGeben() {
         System.out.println(name + " Knr.:" + kundennummer);
     }
 
-    public boolean SchluesselIstGleich(String vergleichswert) {
+    public boolean schluesselIstGleich(String vergleichswert) {
         return name.equals(vergleichswert);
     }
 

@@ -11,12 +11,6 @@ public class    LISTE {
         anfang = new KNOTEN(datenelement, anfang);
     }
 
-    public void hintenEinfuegenWhile(DATENELEMENT datenelement) {
-        LISTENELEMENT k2 = anfang;
-        while (k2.nachfolgerGeben() != null) k2 = k2.nachfolgerGeben();
-        k2.nachfolgerSetzen(new KNOTEN(datenelement));
-    }
-
     public  void hintenEinfuegen(DATENELEMENT datenelement) {
         anfang = anfang.hintenEinfuegen(datenelement);
     }
@@ -70,8 +64,6 @@ public class    LISTE {
     }
 
     public LISTENELEMENT vorgaengerSuchen(DATENELEMENT datenelement) {
-            if (anfang.nachfolgerGeben() != null)
-                return anfang.vorgaengerSuchen(datenelement);
-            else return null;
+        return anfang.vorgaengerSuchen(datenelement);
     }
 }

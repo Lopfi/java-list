@@ -7,7 +7,7 @@ class PATIENT implements DATENELEMENT {
         name = nameNeu;
     }
 
-    public void InformationGeben() {
+    public void informationGeben() {
         System.out.print(name);
     }
 
@@ -19,7 +19,7 @@ class PATIENT implements DATENELEMENT {
         return datenelement.getKey().compareTo(this.getKey()) < 0;
     }
 
-    public boolean SchluesselIstGleich(String vergleichswert) {
+    public boolean schluesselIstGleich(String vergleichswert) {
         return name == vergleichswert;
     }
 }

@@ -35,7 +35,7 @@ public class KNOTEN extends LISTENELEMENT {
     }
 
     public void informationGeben() {
-        daten.InformationGeben();
+        daten.informationGeben();
     }
 
     public int restlaengeGeben() {
@@ -48,12 +48,12 @@ public class KNOTEN extends LISTENELEMENT {
     }
 
     public DATENELEMENT suchen(String vergleichwert) {
-        if (daten.SchluesselIstGleich(vergleichwert)) return daten;
+        if (daten.schluesselIstGleich(vergleichwert)) return daten;
         else return nachfolger.suchen(vergleichwert);
     }
 
     public LISTENELEMENT einfuegenVor(DATENELEMENT dneu, DATENELEMENT dvergleich) {
-        if (this.daten.SchluesselIstGleich(dvergleich.getKey())) {
+        if (this.daten.schluesselIstGleich(dvergleich.getKey())) {
             KNOTEN k = new KNOTEN(dneu, this);
             return k;
         } else nachfolger = nachfolger.einfuegenVor(dneu, dvergleich);

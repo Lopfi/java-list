@@ -15,11 +15,11 @@ class MUSIKTITEL implements DATENELEMENT {
         return titel;
     }
 
-    public void InformationGeben() {
+    public void informationGeben() {
         System.out.println(titel + ", " + interpret + ", " + dauerInSec / 60 + ":" + dauerInSec % 60);
     }
 
-    public boolean SchluesselIstGleich(String vergleichswert) {
+    public boolean schluesselIstGleich(String vergleichswert) {
         return titel.equals(vergleichswert);
     }
 
