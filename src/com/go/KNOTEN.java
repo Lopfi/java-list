@@ -53,7 +53,7 @@ public class KNOTEN extends LISTENELEMENT {
     }
 
     public LISTENELEMENT einfuegenVor(DATENELEMENT dneu, DATENELEMENT dvergleich) {
-        if (this.daten == dvergleich) {
+        if (this.daten.SchluesselIstGleich(dvergleich.getKey())) {
             KNOTEN k = new KNOTEN(dneu, this);
             return k;
         } else nachfolger = nachfolger.einfuegenVor(dneu, dvergleich);

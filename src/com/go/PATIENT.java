@@ -20,7 +20,7 @@ class PATIENT implements DATENELEMENT {
     }
 
     public boolean SchluesselIstGleich(String vergleichswert) {
-        return name.equals(vergleichswert);
+        return name == vergleichswert;
     }
 }
 

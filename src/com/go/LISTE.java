@@ -58,7 +58,7 @@ public class    LISTE {
     }
 
     public int laengeGeben() {
-        return anfang.restlaengeGeben() + 1;
+        return anfang.restlaengeGeben();
     }
 
     public DATENELEMENT suchen(String vergleichwert) {
