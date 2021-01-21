@@ -1,9 +1,9 @@
-package com.go;
+package com.go.daten;
 
-class PATIENT implements DATENELEMENT {
+public class PATIENT implements DATENELEMENT {
     String name;
 
-    PATIENT(String nameNeu) {
+    public PATIENT(String nameNeu) {
         name = nameNeu;
     }
 

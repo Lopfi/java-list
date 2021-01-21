@@ -1,4 +1,4 @@
-package com.go;
+package com.go.daten;
 
 class KUNDE implements DATENELEMENT {
     String name;

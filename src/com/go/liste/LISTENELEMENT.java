@@ -1,4 +1,6 @@
-package com.go;
+package com.go.liste;
+
+import com.go.daten.DATENELEMENT;
 
 public abstract class LISTENELEMENT {
 

@@ -1,4 +1,4 @@
-package com.go;
+package com.go.daten;
 
 class MUSIKTITEL implements DATENELEMENT {
     String titel;

@@ -1,4 +1,4 @@
-package com.go;
+package com.go.daten;
 
 public interface DATENELEMENT {
     void informationGeben();
