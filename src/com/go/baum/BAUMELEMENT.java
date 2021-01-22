@@ -4,7 +4,9 @@ import com.go.daten.DATENELEMENT;
 
 public abstract class BAUMELEMENT {
 
-    public abstract void nachfolgerSetzen(BAUMELEMENT nachfolgerNeu);
+    public abstract void nachfolgerLSetzten(BAUMELEMENT nachfolgerNeu);
+
+    public abstract void nachfolgerRSetzten(BAUMELEMENT nachfolgerNeu);
 
     public abstract void informationGeben();
 
@@ -15,8 +17,6 @@ public abstract class BAUMELEMENT {
     public abstract DATENELEMENT suchen(String vergleichwert);
 
     public abstract DATENELEMENT endeGeben();
-
-    public abstract BAUMELEMENT einfuegenVor(DATENELEMENT datenelement, DATENELEMENT vergleich);
 
     public abstract BAUMELEMENT hintenEinfuegen(DATENELEMENT datenelement);
 

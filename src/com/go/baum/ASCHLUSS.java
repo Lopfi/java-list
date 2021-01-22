@@ -11,7 +11,9 @@ public class ASCHLUSS extends BAUMELEMENT {
         return null;
     }
 
-    public void nachfolgerSetzen(BAUMELEMENT nachfolgerNeu) {}
+    public void nachfolgerLSetzten(BAUMELEMENT nachfolgerNeu) {}
+
+    public void nachfolgerRSetzten(BAUMELEMENT nachfolgerNeu) {}
 
     public DATENELEMENT datenGeben() {
         return null;
@@ -34,16 +36,12 @@ public class ASCHLUSS extends BAUMELEMENT {
     }
 
     public BAUMELEMENT sortiertEinfuegen(DATENELEMENT datenelement) {
-        KNOTEN knoten = new KNOTEN(datenelement, this);
+        KNOTEN knoten = new KNOTEN(datenelement, this, this);
         return knoten;
     }
 
-    public BAUMELEMENT einfuegenVor(DATENELEMENT datenelement, DATENELEMENT vergleich) {
-        return hintenEinfuegen(datenelement);
-    }
-
     public BAUMELEMENT hintenEinfuegen(DATENELEMENT datenelement) {
-        KNOTEN knoten = new KNOTEN(datenelement, this);
+        KNOTEN knoten = new KNOTEN(datenelement, this, null);
         return knoten;
     }
 

@@ -4,39 +4,35 @@ import com.go.daten.DATENELEMENT;
 
 public class KNOTEN extends BAUMELEMENT {
     private DATENELEMENT daten;
-    private BAUMELEMENT nachfolger_l;
-    private BAUMELEMENT nachfolger_r;
+    private BAUMELEMENT nachfolgerR;
+    private BAUMELEMENT nachfolgerL;
 
-    public KNOTEN(DATENELEMENT daten, BAUMELEMENT nachfolger_l, BAUMELEMENT nachfolger_r) {
+    public KNOTEN(DATENELEMENT daten, BAUMELEMENT nachfolgerL, BAUMELEMENT nachfolgerR) {
         this.daten = daten;
-        this.nachfolger_l = nachfolger_l;
-        this.nachfolger_r = nachfolger_r;
+        this.nachfolgerR = nachfolgerR;
+        this.nachfolgerL = nachfolgerL;
     }
 
     public KNOTEN(DATENELEMENT daten) {
         this.daten = daten;
-        nachfolger_l = null;
-        nachfolger_r = null;
+        nachfolgerR = new ASCHLUSS();
+        nachfolgerL = new ASCHLUSS();
     }
 
     public BAUMELEMENT nachfolgerLGeben() {
-        return nachfolger_l;
+        return nachfolgerL;
     }
 
-    public BAUMELEMENT knotenEntfernen(DATENELEMENT datenelement) {
-        if(daten == datenelement) return nachfolger_l;
-        else {
-            nachfolger_l = nachfolger_l.knotenEntfernen(datenelement);
-            return this;
-        }
+    public BAUMELEMENT nachfolgerRGeben() {
+        return nachfolgerR;
     }
 
-    public void nachfolgerSetzen(BAUMELEMENT nachfolgerNeu) {
-        nachfolger_l = nachfolgerNeu;
+    public void nachfolgerLSetzten(BAUMELEMENT nachfolgerNeu) {
+        nachfolgerL = nachfolgerNeu;
     }
 
-    public DATENELEMENT datenGeben() {
-        return daten;
+    public void nachfolgerRSetzten(BAUMELEMENT nachfolgerNeu) {
+        nachfolgerR = nachfolgerNeu;
     }
 
     public void informationGeben() {
@@ -44,55 +40,61 @@ public class KNOTEN extends BAUMELEMENT {
     }
 
     public int resthoeheGeben() {
-        return nachfolger_l.resthoeheGeben() + 1;
+        return ((nachfolgerL.resthoeheGeben() > nachfolgerR.resthoeheGeben()) ? nachfolgerL.resthoeheGeben() : nachfolgerR.resthoeheGeben()) + 1;
+    }
+
+    public DATENELEMENT datenGeben() {
+        return daten;
     }
 
     public DATENELEMENT endeGeben() {
-        if (nachfolger_l.endeGeben() == null) return daten;
-        else return nachfolger_l.endeGeben();
+        if (nachfolgerL.endeGeben() == null) return daten;
+        else return nachfolgerL.endeGeben();
     }
 
-    public DATENELEMENT suchen(String vergleichwert) {
-        if (daten.schluesselIstGleich(vergleichwert)) return daten;
-        else return nachfolger_l.suchen(vergleichwert);
-    }
-
-    public BAUMELEMENT einfuegenVor(DATENELEMENT dneu, DATENELEMENT dvergleich) {
-        if (this.daten.schluesselIstGleich(dvergleich.getKey())) {
-            KNOTEN k = new KNOTEN(dneu, this);
-            return k;
-        } else nachfolger_l = nachfolger_l.einfuegenVor(dneu, dvergleich);
-        return this;
-    }
-
-    public BAUMELEMENT sortiertEinfuegen(DATENELEMENT datenelement) {
-        if (!datenelement.istKleinerAls(this.daten)) {
-            KNOTEN knoten = new KNOTEN(datenelement, this);
-            return knoten;
-        }
+    public BAUMELEMENT knotenEntfernen(DATENELEMENT datenelement) {
+        if(daten == datenelement) return nachfolgerL;
         else {
-            nachfolger_l = nachfolger_l.sortiertEinfuegen(datenelement);
+            nachfolgerL = nachfolgerL.knotenEntfernen(datenelement);
             return this;
         }
     }
 
+    public DATENELEMENT suchen(String vergleichwert) {
+        if (daten.schluesselIstGleich(vergleichwert)) return daten;
+        else return nachfolgerL.suchen(vergleichwert);
+    }
+
+    public BAUMELEMENT sortiertEinfuegen(DATENELEMENT datenelement) {
+        if (datenelement.schluesselIstGleich(datenelement.getKey())) {
+            return this;
+        }
+        if (datenelement.istKleinerAls(this.daten)) {
+            nachfolgerR = nachfolgerR.sortiertEinfuegen(datenelement);
+        }
+        else {
+            nachfolgerL = nachfolgerL.sortiertEinfuegen(datenelement);
+        }
+        return this;
+    }
+
     public BAUMELEMENT hintenEinfuegen(DATENELEMENT datenelement) {
-        nachfolger_l = nachfolger_l.hintenEinfuegen(datenelement);
+        nachfolgerL = nachfolgerL.hintenEinfuegen(datenelement);
         return this;
     }
 
     public BAUMELEMENT suchen(DATENELEMENT datenelement) {
         if (datenelement == this.daten) return this;
-        else return nachfolger_l.suchen(datenelement);
+        else return nachfolgerL.suchen(datenelement);
     }
 
     public BAUMELEMENT vorgaengerSuchen(DATENELEMENT datenelement) {
-        if (datenelement == nachfolger_l.datenGeben()) return this;
-        else return nachfolger_l.vorgaengerSuchen(datenelement);
+        if (datenelement == nachfolgerL.datenGeben()) return this;
+        else return nachfolgerL.vorgaengerSuchen(datenelement);
     }
 
     public BAUMELEMENT endeEntfernen() {
-        nachfolger_l = nachfolger_l.endeEntfernen();
+        nachfolgerL = nachfolgerL.endeEntfernen();
         return this;
     }
 }

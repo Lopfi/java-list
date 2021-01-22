@@ -9,10 +9,6 @@ public class BINBAUM {
         wurzel = new ASCHLUSS();
     }
 
-    public void vorneEinfuegen(DATENELEMENT datenelement) {
-        wurzel = new KNOTEN(datenelement, wurzel);
-    }
-
     public  void hintenEinfuegen(DATENELEMENT datenelement) {
         wurzel = wurzel.hintenEinfuegen(datenelement);
     }
@@ -34,7 +30,8 @@ public class BINBAUM {
     public void knotenEntfernen(DATENELEMENT datenelement) {
         BAUMELEMENT k1 = this.suchen(datenelement);
         BAUMELEMENT k2 = this.vorgaengerSuchen(datenelement);
-        k2.nachfolgerSetzen(k1.nachfolgerLGeben());
+        k2.nachfolgerLSetzten(k1.nachfolgerLGeben());
+        k2.nachfolgerLSetzten(k1.nachfolgerLGeben());
     }
 
     public DATENELEMENT endeEntfernen() {
