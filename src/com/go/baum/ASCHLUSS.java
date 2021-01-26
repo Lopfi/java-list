@@ -4,7 +4,11 @@ import com.go.daten.DATENELEMENT;
 
 public class ASCHLUSS extends BAUMELEMENT {
     public BAUMELEMENT nachfolgerLGeben() {
-        return this;
+        return null;
+    }
+
+    public BAUMELEMENT nachfolgerRGeben() {
+        return null;
     }
 
     public BAUMELEMENT knotenEntfernen(DATENELEMENT datenelement) {
@@ -36,7 +40,7 @@ public class ASCHLUSS extends BAUMELEMENT {
     }
 
     public BAUMELEMENT einfuegen(DATENELEMENT datenelement) {
-        KNOTEN knoten = new KNOTEN(datenelement, this, null);
+        KNOTEN knoten = new KNOTEN(datenelement, this, this);
         return knoten;
     }
 

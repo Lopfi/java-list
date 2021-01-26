@@ -66,7 +66,15 @@ public class KNOTEN extends BAUMELEMENT {
     }
 
     public BAUMELEMENT einfuegen(DATENELEMENT datenelement) {
-        nachfolgerL = nachfolgerL.einfuegen(datenelement);
+        if (this.daten.schluesselIstGleich(datenelement.getKey())) {
+            return this;
+        }
+        if (datenelement.istKleinerAls(this.daten)) {
+            this.nachfolgerR = this.nachfolgerR.einfuegen(datenelement);
+        }
+        else {
+            this.nachfolgerL = this.nachfolgerL.einfuegen(datenelement);
+        }
         return this;
     }
 

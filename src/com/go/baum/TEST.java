@@ -10,10 +10,13 @@ public class TEST {
 
     private BINBAUM baum;
     private int anzahl;
+    private BAUMDRUCKER baumdrucker;
+    private String[] woerter;
 
     public TEST() {
         this.baum = new BINBAUM();
         this.anzahl = 10;
+        this.baumdrucker = new BAUMDRUCKER(this.baum);
     }
 
     public void setAnzahl(int anzahl) {
@@ -22,17 +25,17 @@ public class TEST {
 
     public void einfuegen(int anzahl) {
         for (int i = 0; i < anzahl; i++) {
-            WOERTERBUCHEINTRAG p = new WOERTERBUCHEINTRAG(Integer.toString(i));
-            baum.einfuegen(p);
+            WOERTERBUCHEINTRAG w = new WOERTERBUCHEINTRAG(Integer.toString(i));
+            baum.einfuegen(w);
         }
     }
 
     public void testEinfuegen() {
         System.out.println("Testing hintenEinfuegen * " + this.anzahl + ": ");
         this.baum = new BINBAUM();
-        baum.informationGeben();
+        baumdrucker.print(this.baum);
         this.einfuegen(anzahl);
-        baum.informationGeben();
+        baumdrucker.print(this.baum);
     }
 
     public void testAll() {

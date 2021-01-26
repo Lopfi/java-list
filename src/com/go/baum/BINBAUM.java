@@ -9,6 +9,10 @@ public class BINBAUM {
         wurzel = new ASCHLUSS();
     }
 
+    public BAUMELEMENT getWurzel() {
+        return wurzel;
+    }
+
     public  void einfuegen(DATENELEMENT datenelement) {
         wurzel = wurzel.einfuegen(datenelement);
     }

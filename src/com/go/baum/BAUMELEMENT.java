@@ -28,5 +28,7 @@ public abstract class BAUMELEMENT {
 
     public abstract BAUMELEMENT nachfolgerLGeben();
 
+    public abstract BAUMELEMENT nachfolgerRGeben();
+
     public abstract BAUMELEMENT knotenEntfernen(DATENELEMENT datenelement);
 }
