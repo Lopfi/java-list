@@ -35,12 +35,7 @@ public class ASCHLUSS extends BAUMELEMENT {
         return null;
     }
 
-    public BAUMELEMENT sortiertEinfuegen(DATENELEMENT datenelement) {
-        KNOTEN knoten = new KNOTEN(datenelement, this, this);
-        return knoten;
-    }
-
-    public BAUMELEMENT hintenEinfuegen(DATENELEMENT datenelement) {
+    public BAUMELEMENT einfuegen(DATENELEMENT datenelement) {
         KNOTEN knoten = new KNOTEN(datenelement, this, null);
         return knoten;
     }

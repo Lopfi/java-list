@@ -65,21 +65,8 @@ public class KNOTEN extends BAUMELEMENT {
         else return nachfolgerL.suchen(vergleichwert);
     }
 
-    public BAUMELEMENT sortiertEinfuegen(DATENELEMENT datenelement) {
-        if (datenelement.schluesselIstGleich(datenelement.getKey())) {
-            return this;
-        }
-        if (datenelement.istKleinerAls(this.daten)) {
-            nachfolgerR = nachfolgerR.sortiertEinfuegen(datenelement);
-        }
-        else {
-            nachfolgerL = nachfolgerL.sortiertEinfuegen(datenelement);
-        }
-        return this;
-    }
-
-    public BAUMELEMENT hintenEinfuegen(DATENELEMENT datenelement) {
-        nachfolgerL = nachfolgerL.hintenEinfuegen(datenelement);
+    public BAUMELEMENT einfuegen(DATENELEMENT datenelement) {
+        nachfolgerL = nachfolgerL.einfuegen(datenelement);
         return this;
     }
 

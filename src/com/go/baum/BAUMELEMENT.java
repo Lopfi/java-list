@@ -18,11 +18,9 @@ public abstract class BAUMELEMENT {
 
     public abstract DATENELEMENT endeGeben();
 
-    public abstract BAUMELEMENT hintenEinfuegen(DATENELEMENT datenelement);
+    public abstract BAUMELEMENT einfuegen(DATENELEMENT datenelement);
 
     public abstract BAUMELEMENT endeEntfernen();
-
-    public abstract BAUMELEMENT sortiertEinfuegen(DATENELEMENT datenelement);
 
     public abstract BAUMELEMENT suchen (DATENELEMENT datenelement);
 

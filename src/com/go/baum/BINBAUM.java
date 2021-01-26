@@ -9,16 +9,8 @@ public class BINBAUM {
         wurzel = new ASCHLUSS();
     }
 
-    public  void hintenEinfuegen(DATENELEMENT datenelement) {
-        wurzel = wurzel.hintenEinfuegen(datenelement);
-    }
-
-    public void einfuegenVor(DATENELEMENT dNeu, DATENELEMENT dvergleich) {
-        wurzel = wurzel.einfuegenVor(dNeu, dvergleich);
-    }
-
-    public void sortiertEinfuegen(DATENELEMENT datenelement) {
-        wurzel = wurzel.sortiertEinfuegen(datenelement);
+    public  void einfuegen(DATENELEMENT datenelement) {
+        wurzel = wurzel.einfuegen(datenelement);
     }
 
     public DATENELEMENT wurzelEntfernen() {
