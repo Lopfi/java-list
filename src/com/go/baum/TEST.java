@@ -1,40 +1,37 @@
 package com.go.baum;
 
 import com.go.daten.WOERTERBUCHEINTRAG;
+import com.go.daten.DATENGENERATOR;
+import java.util.*;
+import java.io.File;
 
 public class TEST {
-    public static void main(String[] args) {
-        TEST test = new TEST();
+    public static void main(String[] args) throws Exception {
+        TEST test = new TEST(DATENGENERATOR.dictionaryRead("./woerter.txt"));
         test.testEinfuegen();
     }
 
     private BINBAUM baum;
-    private int anzahl;
     private BAUMDRUCKER baumdrucker;
     private String[] woerter;
 
-    public TEST() {
+    public TEST(String[] woerter) {
         this.baum = new BINBAUM();
-        this.anzahl = 10;
         this.baumdrucker = new BAUMDRUCKER(this.baum);
+        this.woerter = woerter;
     }
 
-    public void setAnzahl(int anzahl) {
-        this.anzahl = anzahl;
-    }
-
-    public void einfuegen(int anzahl) {
-        for (int i = 0; i < anzahl; i++) {
-            WOERTERBUCHEINTRAG w = new WOERTERBUCHEINTRAG(Integer.toString(i));
+    public void einfuegen() {
+        for (int i = 0; i < woerter.length; i++) {
+            WOERTERBUCHEINTRAG w = new WOERTERBUCHEINTRAG(woerter[i]);
             baum.einfuegen(w);
         }
     }
 
     public void testEinfuegen() {
-        System.out.println("Testing hintenEinfuegen * " + this.anzahl + ": ");
+        System.out.println("Testing Einfuegen: ");
         this.baum = new BINBAUM();
-        baumdrucker.print(this.baum);
-        this.einfuegen(anzahl);
+        this.einfuegen();
         baumdrucker.print(this.baum);
     }
 
@@ -46,11 +43,11 @@ public class TEST {
         System.out.println("Leere baum:");
         baum.informationGeben();
 
-        System.out.println("HintenEinfuegen * " + this.anzahl + ":");
-        this.einfuegen(this.anzahl);
+        System.out.println("Einfuegen:");
+        this.einfuegen();
         baum.informationGeben();
 
-        System.out.println("Laenge geben:");
+        System.out.println("Hoehe geben:");
         System.out.println(baum.laengeGeben());
 
         System.out.println("EndeEntfernen:");

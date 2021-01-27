@@ -70,10 +70,10 @@ public class KNOTEN extends BAUMELEMENT {
             return this;
         }
         if (datenelement.istKleinerAls(this.daten)) {
-            this.nachfolgerR = this.nachfolgerR.einfuegen(datenelement);
+            this.nachfolgerL = this.nachfolgerL.einfuegen(datenelement);
         }
         else {
-            this.nachfolgerL = this.nachfolgerL.einfuegen(datenelement);
+            this.nachfolgerR = this.nachfolgerR.einfuegen(datenelement);
         }
         return this;
     }

@@ -1,6 +1,7 @@
 package com.go.daten;
 
 public class WOERTERBUCHEINTRAG implements DATENELEMENT{
+
     String wort;
 
     public WOERTERBUCHEINTRAG(String wort) {
@@ -20,6 +21,6 @@ public class WOERTERBUCHEINTRAG implements DATENELEMENT{
     }
 
     public boolean schluesselIstGleich(String vergleichswert) {
-        return wort == vergleichswert;
+        return wort.equals(vergleichswert);
     }
 }
