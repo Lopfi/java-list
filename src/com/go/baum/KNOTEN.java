@@ -40,7 +40,9 @@ public class KNOTEN extends BAUMELEMENT {
     }
 
     public int resthoeheGeben() {
-        return ((nachfolgerL.resthoeheGeben() > nachfolgerR.resthoeheGeben()) ? nachfolgerL.resthoeheGeben() : nachfolgerR.resthoeheGeben()) + 1;
+        int l = nachfolgerL.resthoeheGeben();
+        int r = nachfolgerR.resthoeheGeben();
+        return ((l > r) ? l : r) + 1;
     }
 
     public DATENELEMENT datenGeben() {

@@ -2,8 +2,6 @@ package com.go.baum;
 
 import com.go.daten.WOERTERBUCHEINTRAG;
 import com.go.daten.DATENGENERATOR;
-import java.util.*;
-import java.io.File;
 
 public class TEST {
     public static void main(String[] args) throws Exception {
@@ -33,6 +31,7 @@ public class TEST {
         this.baum = new BINBAUM();
         this.einfuegen();
         baumdrucker.print(this.baum);
+        System.out.println(baum.hoeheGeben());
     }
 
     public void testAll() {
@@ -48,7 +47,7 @@ public class TEST {
         baum.informationGeben();
 
         System.out.println("Hoehe geben:");
-        System.out.println(baum.laengeGeben());
+        System.out.println(baum.hoeheGeben());
 
         System.out.println("EndeEntfernen:");
         baum.endeEntfernen();

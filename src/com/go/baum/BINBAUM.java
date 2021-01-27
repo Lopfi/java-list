@@ -46,8 +46,8 @@ public class BINBAUM {
         System.out.println();
     }
 
-    public int laengeGeben() {
-        return wurzel.resthoeheGeben();
+    public int hoeheGeben() {
+        return wurzel.resthoeheGeben()-1;
     }
 
     public DATENELEMENT suchen(String vergleichwert) {
