@@ -8,7 +8,7 @@ public class BAUMDRUCKER {
             this.baum = baum;
         }
 
-        private String traversePreOrder(BINBAUM binbaum) {
+        private String baumStringZusammensetzen(BINBAUM binbaum) {
 
             BAUMELEMENT root = binbaum.getWurzel();
 
@@ -20,13 +20,13 @@ public class BAUMDRUCKER {
             String pointerRight = "└──";
             String pointerLeft = (root.nachfolgerRGeben() != null) ? "├──" : "└──";
 
-            traverseNodes(sb, "", pointerLeft, root.nachfolgerLGeben(), root.nachfolgerRGeben() != null);
-            traverseNodes(sb, "", pointerRight, root.nachfolgerRGeben(), false);
+            knotenStringZusammensetzen(sb, "", pointerLeft, root.nachfolgerLGeben(), root.nachfolgerRGeben() != null);
+            knotenStringZusammensetzen(sb, "", pointerRight, root.nachfolgerRGeben(), false);
 
             return sb.toString();
         }
 
-        private void traverseNodes(StringBuilder sb, String padding, String pointer, BAUMELEMENT node, boolean hasRightSibling) {
+        private void knotenStringZusammensetzen(StringBuilder sb, String padding, String pointer, BAUMELEMENT node, boolean hasRightSibling) {
 
             if (node != null && !(node instanceof ASCHLUSS)) {
 
@@ -46,13 +46,13 @@ public class BAUMDRUCKER {
                 String pointerRight = "└──";
                 String pointerLeft = (node.nachfolgerRGeben() != null) ? "├──" : "└──";
 
-                traverseNodes(sb, paddingForBoth, pointerLeft, node.nachfolgerLGeben(), node.nachfolgerRGeben() != null);
-                traverseNodes(sb, paddingForBoth, pointerRight, node.nachfolgerRGeben(), false);
+                knotenStringZusammensetzen(sb, paddingForBoth, pointerLeft, node.nachfolgerLGeben(), node.nachfolgerRGeben() != null);
+                knotenStringZusammensetzen(sb, paddingForBoth, pointerRight, node.nachfolgerRGeben(), false);
 
             }
         }
 
         public void print(BINBAUM baum) {
-            System.out.println(this.traversePreOrder(baum));
+            System.out.println(this.baumStringZusammensetzen(baum));
         }
 }
