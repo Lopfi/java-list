@@ -64,7 +64,8 @@ public class KNOTEN extends BAUMELEMENT {
 
     public DATENELEMENT suchen(String vergleichwert) {
         if (daten.schluesselIstGleich(vergleichwert)) return daten;
-        else return nachfolgerL.suchen(vergleichwert);
+        else if(nachfolgerL.suchen(vergleichwert) != null) return nachfolgerL.suchen(vergleichwert);
+        else return nachfolgerR.suchen(vergleichwert);
     }
 
     public BAUMELEMENT einfuegen(DATENELEMENT datenelement) {
