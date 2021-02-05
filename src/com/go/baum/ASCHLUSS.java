@@ -40,8 +40,7 @@ public class ASCHLUSS extends BAUMELEMENT {
     }
 
     public BAUMELEMENT einfuegen(DATENELEMENT datenelement) {
-        KNOTEN knoten = new KNOTEN(datenelement, this, this);
-        return knoten;
+        return new KNOTEN(datenelement);
     }
 
     public BAUMELEMENT suchen(DATENELEMENT datenelement) {

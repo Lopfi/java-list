@@ -30,11 +30,6 @@ public class BINBAUM {
         k2.nachfolgerLSetzten(k1.nachfolgerLGeben());
     }
 
-    public DATENELEMENT endeEntfernen() {
-        DATENELEMENT ende = wurzel.endeGeben();
-        return wurzel.endeEntfernen().datenGeben();
-    }
-
     public void informationGeben() {
         BAUMELEMENT knoten;
         knoten = wurzel;
@@ -47,7 +42,7 @@ public class BINBAUM {
     }
 
     public int hoeheGeben() {
-        return wurzel.resthoeheGeben()-1;
+        return wurzel.resthoeheGeben();
     }
 
     public DATENELEMENT suchen(String vergleichwert) {
