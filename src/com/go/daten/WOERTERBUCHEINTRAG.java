@@ -3,13 +3,15 @@ package com.go.daten;
 public class WOERTERBUCHEINTRAG implements DATENELEMENT{
 
     String wort;
+    String uebersetztung;
 
     public WOERTERBUCHEINTRAG(String wort) {
         this.wort = wort;
+        this.uebersetztung = "uebersetzung";
     }
 
     public void informationGeben() {
-        System.out.print(wort);
+        System.out.println(wort);
     }
 
     public String getKey() {

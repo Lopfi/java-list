@@ -8,7 +8,7 @@ public class BAUMDRUCKER {
             this.baum = baum;
         }
 
-        private String baumStringZusammensetzen(BINBAUM binbaum) {
+        private String baumStringVertikalZusammensetzen(BINBAUM binbaum) {
 
             BAUMELEMENT root = binbaum.getWurzel();
 
@@ -20,13 +20,13 @@ public class BAUMDRUCKER {
             String pointerRight = "└──";
             String pointerLeft = (root.nachfolgerRGeben() != null) ? "├──" : "└──";
 
-            knotenStringZusammensetzen(sb, "", pointerLeft, root.nachfolgerLGeben(), root.nachfolgerRGeben() != null);
-            knotenStringZusammensetzen(sb, "", pointerRight, root.nachfolgerRGeben(), false);
+            knotenStringVertikalZusammensetzen(sb, "", pointerLeft, root.nachfolgerLGeben(), root.nachfolgerRGeben() != null);
+            knotenStringVertikalZusammensetzen(sb, "", pointerRight, root.nachfolgerRGeben(), false);
 
             return sb.toString();
         }
 
-        private void knotenStringZusammensetzen(StringBuilder sb, String padding, String pointer, BAUMELEMENT node, boolean hasRightSibling) {
+        private void knotenStringVertikalZusammensetzen(StringBuilder sb, String padding, String pointer, BAUMELEMENT node, boolean hasRightSibling) {
 
             if (node != null && !(node instanceof ASCHLUSS)) {
 
@@ -46,13 +46,15 @@ public class BAUMDRUCKER {
                 String pointerRight = "└──";
                 String pointerLeft = (node.nachfolgerRGeben() != null) ? "├──" : "└──";
 
-                knotenStringZusammensetzen(sb, paddingForBoth, pointerLeft, node.nachfolgerLGeben(), node.nachfolgerRGeben() != null);
-                knotenStringZusammensetzen(sb, paddingForBoth, pointerRight, node.nachfolgerRGeben(), false);
+                knotenStringVertikalZusammensetzen(sb, paddingForBoth, pointerLeft, node.nachfolgerLGeben(), node.nachfolgerRGeben() != null);
+                knotenStringVertikalZusammensetzen(sb, paddingForBoth, pointerRight, node.nachfolgerRGeben(), false);
 
             }
         }
 
-        public void print(BINBAUM baum) {
-            System.out.println(this.baumStringZusammensetzen(baum));
+        public void printVertikal(BINBAUM baum) {
+            System.out.println(this.baumStringVertikalZusammensetzen(baum));
         }
+
+
 }

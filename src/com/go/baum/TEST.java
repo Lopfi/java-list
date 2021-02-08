@@ -30,35 +30,13 @@ public class TEST {
         System.out.println("Testing Einfuegen: ");
         this.baum = new BINBAUM();
         this.einfuegen();
-        baumdrucker.print(this.baum);
+        baumdrucker.printVertikal(this.baum);
         System.out.println(baum.hoeheGeben());
-    }
-
-    public void testAll() {
-        this.baum = new BINBAUM();
-        WOERTERBUCHEINTRAG p0 = new WOERTERBUCHEINTRAG("p0");
-        WOERTERBUCHEINTRAG p1 = new WOERTERBUCHEINTRAG("p1");
-
-        System.out.println("Leere baum:");
-        baum.informationGeben();
-
-        System.out.println("Einfuegen:");
-        this.einfuegen();
-        baum.informationGeben();
-
-        System.out.println("Hoehe geben:");
-        System.out.println(baum.hoeheGeben());
-
-        System.out.println("EndeEntfernen:");
-        baum.endeEntfernen();
-        baum.informationGeben();
-
-        System.out.println("p0 entfernen:");
-        baum.knotenEntfernen(p0);
-        baum.informationGeben();
-
-        System.out.println("p1 suchen");
-        System.out.println(baum.suchen("p1").getKey());
-
+        System.out.println("inorder Ausgabe:");
+        baum.inorderAusgeben();
+        System.out.println("preorder Ausgabe:");
+        baum.preorderAusgeben();
+        System.out.println("postorder Ausgabe:");
+        baum.postorderAusgeben();
     }
 }

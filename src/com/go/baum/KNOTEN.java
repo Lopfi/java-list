@@ -7,12 +7,6 @@ public class KNOTEN extends BAUMELEMENT {
     private BAUMELEMENT nachfolgerR;
     private BAUMELEMENT nachfolgerL;
 
-    public KNOTEN(DATENELEMENT daten, BAUMELEMENT nachfolgerL, BAUMELEMENT nachfolgerR) {
-        this.daten = daten;
-        this.nachfolgerR = nachfolgerR;
-        this.nachfolgerL = nachfolgerL;
-    }
-
     public KNOTEN(DATENELEMENT daten) {
         this.daten = daten;
         nachfolgerR = new ASCHLUSS();
@@ -45,13 +39,26 @@ public class KNOTEN extends BAUMELEMENT {
         return ((l > r) ? l : r) + 1;
     }
 
-    public DATENELEMENT datenGeben() {
-        return daten;
+    public void inorderAusgeben() {
+        nachfolgerL.inorderAusgeben();
+        daten.informationGeben();
+        nachfolgerR.inorderAusgeben();
     }
 
-    public DATENELEMENT endeGeben() {
-        if (nachfolgerL.endeGeben() == null) return daten;
-        else return nachfolgerL.endeGeben();
+    public void preorderAusgeben(int tiefe) {
+        System.out.format("%" + tiefe + "s", daten.getKey() + "\n");
+        nachfolgerL.preorderAusgeben(tiefe);
+        nachfolgerR.preorderAusgeben(tiefe);
+    }
+
+    public void postorderAusgeben(int tiefe) {
+        System.out.format("%" + tiefe + "s", daten.getKey() + "\n");
+        nachfolgerR.preorderAusgeben(tiefe);
+        nachfolgerL.preorderAusgeben(tiefe);
+    }
+
+    public DATENELEMENT datenGeben() {
+        return daten;
     }
 
     public BAUMELEMENT knotenEntfernen(DATENELEMENT datenelement) {
@@ -86,13 +93,4 @@ public class KNOTEN extends BAUMELEMENT {
         else return nachfolgerL.suchen(datenelement);
     }
 
-    public BAUMELEMENT vorgaengerSuchen(DATENELEMENT datenelement) {
-        if (datenelement == nachfolgerL.datenGeben()) return this;
-        else return nachfolgerL.vorgaengerSuchen(datenelement);
-    }
-
-    public BAUMELEMENT endeEntfernen() {
-        nachfolgerL = nachfolgerL.endeEntfernen();
-        return this;
-    }
 }

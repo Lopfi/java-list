@@ -31,9 +31,11 @@ public class ASCHLUSS extends BAUMELEMENT {
         return 0;
     }
 
-    public DATENELEMENT endeGeben() {
-        return null;
-    }
+    public void inorderAusgeben() {}
+
+    public void preorderAusgeben(int tiefe) {}
+
+    public void postorderAusgeben(int tiefe) {}
 
     public DATENELEMENT suchen(String vergleichwert) {
         return null;
@@ -47,11 +49,4 @@ public class ASCHLUSS extends BAUMELEMENT {
         return null;
     }
 
-    public BAUMELEMENT vorgaengerSuchen(DATENELEMENT datenelement) {
-        return null;
-    }
-
-    public BAUMELEMENT endeEntfernen() {
-        return this;
-    }
 }
