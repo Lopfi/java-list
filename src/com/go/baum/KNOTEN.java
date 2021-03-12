@@ -47,14 +47,14 @@ public class KNOTEN extends BAUMELEMENT {
 
     public void preorderAusgeben(int tiefe) {
         System.out.format("%" + tiefe + "s", daten.getKey() + "\n");
-        nachfolgerL.preorderAusgeben(tiefe);
-        nachfolgerR.preorderAusgeben(tiefe);
+        nachfolgerL.preorderAusgeben(tiefe + 1);
+        nachfolgerR.preorderAusgeben(tiefe + 1);
     }
 
     public void postorderAusgeben(int tiefe) {
         System.out.format("%" + tiefe + "s", daten.getKey() + "\n");
-        nachfolgerR.preorderAusgeben(tiefe);
-        nachfolgerL.preorderAusgeben(tiefe);
+        nachfolgerR.preorderAusgeben(tiefe + 1);
+        nachfolgerL.preorderAusgeben(tiefe + 1);
     }
 
     public DATENELEMENT datenGeben() {
@@ -79,7 +79,7 @@ public class KNOTEN extends BAUMELEMENT {
         if (this.daten.schluesselIstGleich(datenelement.getKey())) {
             return this;
         }
-        if (datenelement.istKleinerAls(this.daten)) {
+        else if (datenelement.istKleinerAls(this.daten)) {
             this.nachfolgerL = this.nachfolgerL.einfuegen(datenelement);
         }
         else {

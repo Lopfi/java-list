@@ -38,5 +38,7 @@ public class TEST {
         baum.preorderAusgeben();
         System.out.println("postorder Ausgabe:");
         baum.postorderAusgeben();
+        System.out.println("\n\n\n\n\n");
+        baumdrucker.printHorizontal(this.baum);
     }
 }
