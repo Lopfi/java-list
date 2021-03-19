@@ -38,6 +38,7 @@ public class GRAPH {
         KNOTEN nachK = nameZuKnoten(nach);
         if (vonK != null && nachK != null) {
             matrix[vonK.getNummer()][nachK.getNummer()] = gewichtung;
+            matrix[nachK.getNummer()][vonK.getNummer()] = gewichtung;
         }
     }
 
